@@ -1,0 +1,69 @@
+"use client";
+import parse from "html-react-parser";
+
+import React from "react";
+import ScrollAnimation from "react-animate-on-scroll";
+import styles from "./../../../common/Grids/Spaces.module.css";
+import { Col, Flexbox, Row, Section } from "@/Library/common/Grids/Grids";
+import ServicesCard from "@/Library/page/Services/ServicesHeroSection/ServicesCard";
+import {
+	ServicesHeroCardSection,
+	ServicesHeroSectionHeader,
+	ServicesHeroSectionShell,
+	ServicesHeroSectionSubHeading,
+} from "@/Library/page/Services/ServicesHeroSection/ServicesHeroSection.styles";
+import "animate.css/animate.compat.css";
+
+const ServicesHeroSection = ({ services, servicesData }) => {
+	const column1 = servicesData.slice(0, 3);
+	const column2 = servicesData.slice(3, 6);
+
+	return (
+		<>
+			<ServicesHeroSectionShell>
+				<ScrollAnimation animateIn={"fadeIn"}>
+					<Section as={"div"}>
+						<Flexbox justify={"center"}>
+							<div>
+								<ServicesHeroSectionHeader>{services.acf.title}</ServicesHeroSectionHeader>
+
+								<ServicesHeroSectionSubHeading>
+									{services.acf.sub_title}
+								</ServicesHeroSectionSubHeading>
+							</div>
+						</Flexbox>
+					</Section>
+				</ScrollAnimation>
+			</ServicesHeroSectionShell>
+
+			<ServicesHeroCardSection>
+				<Section>
+					<Row as={"ul"}>
+						<Col as={"li"} md={6} className={styles.marginTop_140}>
+							{column1.map((item, i) => (
+								<ServicesCard
+									key={i}
+									title={item.title.rendered}
+									content={parse(item.content.rendered)}
+									tags={[item.acf.tagone, item.acf.tagtwo, item.acf.tagthree, item.acf.tagfour]}
+								/>
+							))}
+						</Col>{" "}
+						<Col as={"li"} md={6}>
+							{column2.map((item, i) => (
+								<ServicesCard
+									key={i}
+									title={item.title.rendered}
+									content={parse(item.content.rendered)}
+									tags={[item.acf.tagone, item.acf.tagtwo, item.acf.tagthree, item.acf.tagfour]}
+								/>
+							))}
+						</Col>{" "}
+					</Row>
+				</Section>
+			</ServicesHeroCardSection>
+		</>
+	);
+};
+
+export default ServicesHeroSection;

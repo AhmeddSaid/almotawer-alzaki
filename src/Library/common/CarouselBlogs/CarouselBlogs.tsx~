@@ -1,0 +1,94 @@
+"use client";
+import React from "react";
+import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
+import ButtonGroupBlogs from "@/Library/common/CarouselBlogs/ButtonGroupBlogs";
+import BlogResourcesCard from "@/Library/page/Home/Blog&Resources/BlogResourcesCard";
+import { formatDateName } from "@/helper/helper";
+
+interface CarouselBlogsProps {
+	posts: {
+		id: number;
+		title: { rendered: string };
+		featuredImage: string | null;
+		category: string;
+		slug: string;
+		date: string;
+	}[];
+}
+
+const CarouselBlogs: React.FC<CarouselBlogsProps> = ({ posts }) => {
+	const carouselNumPosts = 20;
+
+	return (
+		<>
+			<Carousel
+				additionalTransfrom={0}
+				arrows={false}
+				customButtonGroup={<ButtonGroupBlogs />}
+				autoPlaySpeed={3000}
+				centerMode
+				className=""
+				containerClass="container"
+				dotListClass=""
+				draggable
+				focusOnSelect={false}
+				infinite
+				itemClass=""
+				keyBoardControl
+				minimumTouchDrag={80}
+				pauseOnHover
+				renderArrowsWhenDisabled={false}
+				renderButtonGroupOutside={true}
+				renderDotsOutside={false}
+				responsive={{
+					desktop: {
+						breakpoint: {
+							max: 3000,
+							min: 1024,
+						},
+						items: 2,
+						partialVisibilityGutter: 40,
+					},
+					mobile: {
+						breakpoint: {
+							max: 464,
+							min: 0,
+						},
+						items: 1,
+						partialVisibilityGutter: 30,
+					},
+					tablet: {
+						breakpoint: {
+							max: 1024,
+							min: 464,
+						},
+						items: 2,
+						partialVisibilityGutter: 30,
+					},
+				}}
+				rewind={false}
+				rewindWithAnimation={false}
+				rtl={false}
+				shouldResetAutoplay
+				showDots={false}
+				sliderClass=""
+				slidesToSlide={1}
+				swipeable
+			>
+				{posts.slice(0, 20).map(post => (
+					<BlogResourcesCard
+						key={post.id}
+						title={post.title.rendered}
+						image={post.featuredImage || ""}
+						link={`/blog/${post.slug}`}
+						category={post.category}
+						date={formatDateName(post.date)}
+					/>
+				))}
+			</Carousel>
+		</>
+	);
+};
+
+export default CarouselBlogs;

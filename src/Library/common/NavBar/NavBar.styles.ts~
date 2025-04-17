@@ -1,0 +1,62 @@
+"use client";
+
+import styled from "styled-components";
+
+export const NavBarShell = styled.div`
+	background-color: var(--neutral--800, #1f3154);
+	padding-block: 32px;
+
+	& .desktopMenu {
+		@media screen and (max-width: 990px) {
+			display: none;
+		}
+	}
+`;
+
+export const MobileMenu = styled.div`
+	display: none;
+
+	@media screen and (max-width: 990px) {
+		display: none;
+	}
+`;
+
+export const Logo = styled.p`
+		cursor: pointer;
+	font-size: 32px;
+	color: white;
+	transition:
+		transform 0.3s,
+		border-color 0.3s,
+		background-color 0.3s,
+		color 0.3s;
+
+	&:hover {
+		transform: scale3d(0.98, 0.98, 1.01);
+		transition:
+			transform 0.3s,
+			border-color 0.3s,
+			background-color 0.3s,
+			color 0.3s;
+	}
+`;
+
+export const LinkStyles = styled.li`
+	padding-inline: 16px;
+	font-weight: 400;
+	line-height: 1.111em;
+	color: var(--neutral--100, #ffff);
+	font-size: 18px;
+	transition: color 0.3s;
+
+	&:hover {
+		color: var(--accent--primary-1, #4187ff);
+		transition: color 0.3s;
+	}
+
+	@media screen and (max-width: 990px) {
+		font-size: 30px;
+		margin-bottom: 30px;
+		padding-inline: 0;
+	}
+`;

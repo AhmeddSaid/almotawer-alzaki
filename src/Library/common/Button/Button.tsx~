@@ -1,0 +1,30 @@
+import React from "react";
+import { ButtonShell } from "@/Library/common/Button/Button.styles";
+import RightArrow from "@/Library/common/Icons/RightArrow/RightArrow";
+
+const Button = ({
+	body,
+	size,
+	Bgcolor,
+	weight,
+	fullWidth,
+	arrow,
+}: {
+	body: string;
+	size?: string;
+	Bgcolor?: string;
+	weight?: boolean;
+	fullWidth?: boolean;
+	arrow?: boolean;
+}) => {
+	return (
+		<>
+			<ButtonShell fullWidth={false} weight={weight} Bgcolor={Bgcolor} size={size}>
+				{body}
+				{arrow && <RightArrow />}
+			</ButtonShell>
+		</>
+	);
+};
+
+export default Button;

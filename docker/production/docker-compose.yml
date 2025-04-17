@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  smart-developers-production:
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile
+    image: smart-developers-env-production
+    networks:
+      - main_network
+    ports:
+      - "3003:3000"
+
+networks:
+  main_network:
+    driver: bridge

@@ -1,0 +1,47 @@
+"use client";
+import Link from "next/link";
+import React from "react";
+import ScrollAnimation from "react-animate-on-scroll";
+import {
+	AboutHeroButtonContainer,
+	AboutHerosection,
+	AboutHeroSectionContainer,
+	HeroCaption,
+	HeroHeading,
+	HeroTitle,
+} from "@/Library/_Pages/About/AboutHeroSection/AboutHeroSection.styles";
+import Button from "@/Library/common/Button/Button";
+import { Section } from "@/Library/common/Grids/Grids";
+import "animate.css/animate.compat.css";
+
+const AboutHeroSection = () => {
+	return (
+		<>
+			<AboutHerosection>
+				<ScrollAnimation animateIn={"fadeIn"}>
+					<Section as={"div"}>
+						<AboutHeroSectionContainer>
+							<HeroTitle>About us</HeroTitle>
+							<HeroHeading>A great company has a great team behind</HeroHeading>
+							<HeroCaption>
+								Lorem ipsum dolor sit amet consectetur adipiscing elitolmert faucibus ante velit
+								nunc morbi pretium ut nullam dolor.
+							</HeroCaption>
+
+							<AboutHeroButtonContainer>
+								<Link href={"/contact"}>
+									<Button body={"Join our team"} size={"large"} />
+								</Link>
+								<Link href={"/about"}>
+									<Button body={"Our story"} size={"large"} Bgcolor={"secondary"} />
+								</Link>
+							</AboutHeroButtonContainer>
+						</AboutHeroSectionContainer>
+					</Section>
+				</ScrollAnimation>
+			</AboutHerosection>
+		</>
+	);
+};
+
+export default AboutHeroSection;

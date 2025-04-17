@@ -1,0 +1,133 @@
+"use client";
+
+import Link from "next/link";
+import React, { useState } from "react";
+import BlogResourcesCard from "@/Library/page/Home/Blog&Resources/BlogResourcesCard";
+import {
+	BlogContainer,
+	BlogMain,
+	BlogTitle,
+	Container,
+	FilterContainer,
+	FilterItem,
+	FilterTitle,
+	FirstPost,
+	HalfCircle,
+	Img,
+	Post,
+	Posts,
+	PostsContainer,
+	PostTitle,
+	RemainingPosts,
+	TagnDate,
+	TextDivider,
+} from "@/app/[locale]/blog/Blog/Blog.styles";
+
+interface BlogPost {
+	id: number;
+	slug: string;
+	title: {
+		rendered: string;
+	};
+	date: string;
+	featuredImage?: string | null;
+	category?: string;
+}
+
+interface BlogProps {
+	posts: BlogPost[];
+	firstPostImage: string | null;
+	categories: string[];
+}
+
+const Blog: React.FC<BlogProps> = ({ posts, firstPostImage, categories }) => {
+	const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+	const firstPost = posts[0];
+	const remainingPosts = posts.slice(1, 4);
+
+	const handleCategoryChange = (category: string) => {
+		setSelectedCategory(category);
+	};
+
+	const filteredPosts =
+		selectedCategory === "All" ? posts : posts.filter(post => post.category === selectedCategory);
+
+	return (
+		<>
+			<Container>
+				<BlogContainer>
+					<BlogTitle>Blog & Resources</BlogTitle>
+					<BlogMain>
+						<HalfCircle
+							color={"#ff5f55"}
+							style={{ right: "-200px", top: "-120px", transform: "scale(0.9)" }}
+							rotate={"180"}
+						/>
+						<HalfCircle color={"#ffc32a"} style={{ left: "-130px", top: "-60px" }} />
+						<HalfCircle color={"#77e36e"} style={{ left: "-130px", top: "80px" }} />
+
+						{/* Left Side */}
+						<FirstPost>
+							{firstPostImage && <Img src={firstPostImage} alt={firstPost?.title?.rendered} />}
+							<TagnDate>
+								<span>{firstPost?.category}</span>
+								<TextDivider />
+								<span>{formatDateName(firstPost?.date)}</span>
+							</TagnDate>
+							<Link href={`/blog/${firstPost?.slug}`} style={{ color: "white" }}>
+								<PostTitle>{firstPost?.title?.rendered}</PostTitle>
+							</Link>
+						</FirstPost>
+
+						{/* Right Side */}
+						<RemainingPosts>
+							{remainingPosts.map(post => (
+								<Post key={post.id}>
+									<TagnDate>
+										<span>{post.category}</span>
+										<TextDivider />
+										<span>{formatDateName(post.date)}</span>
+									</TagnDate>
+									<Link href={`/blog/${post.slug}`} style={{ color: "white" }}>
+										<PostTitle>{post.title.rendered}</PostTitle>
+									</Link>
+								</Post>
+							))}
+						</RemainingPosts>
+					</BlogMain>
+				</BlogContainer>
+			</Container>
+
+			<PostsContainer>
+				<FilterContainer>
+					<FilterTitle>Latest Posts</FilterTitle>
+					{categories.map(category => (
+						<FilterItem
+							key={category}
+							onClick={() => handleCategoryChange(category)}
+							className={category === selectedCategory ? "active" : ""}
+						>
+							{category}
+						</FilterItem>
+					))}
+				</FilterContainer>
+
+				<Posts>
+					{filteredPosts.map(post => (
+						<BlogResourcesCard
+							key={post.id}
+							title={post.title.rendered}
+							image={post.featuredImage || ""}
+							link={`/blog/${post.slug}`}
+							category={post.category || ""}
+							date={formatDateName(post.date)}
+						/>
+					))}
+				</Posts>
+			</PostsContainer>
+		</>
+	);
+};
+
+export default Blog;

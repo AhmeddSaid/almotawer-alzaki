@@ -1,0 +1,67 @@
+import React from "react";
+import Blog from "@/app/[locale]/blog/Blog/Blog";
+
+const Page = async () => {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_WP_LOCAL_API_URL}/posts`);
+	const data = await res.json();
+
+	if (!Array.isArray(data) || data.length === 0) {
+		return <div>No posts found.</div>;
+	}
+
+	const enrichedPosts = await Promise.all(
+		data.map(async post => {
+			let featuredImage = null;
+			if (post.featured_media) {
+				try {
+					const mediaResponse = await fetch(
+						`${process.env.NEXT_PUBLIC_WP_LOCAL_API_URL}/media/${post.featured_media}`,
+					);
+					const mediaData = await mediaResponse.json();
+					featuredImage = mediaData.source_url;
+				} catch (error) {
+					if (error instanceof Error) {
+						throw new Error(`Error fetching featured media: ${error.message}`);
+					} else {
+						throw new Error("Unknown error occurred while fetching featured media");
+					}
+				}
+			}
+
+			let category = "Uncategorized";
+			if (post.categories && post.categories.length > 0) {
+				try {
+					const categoryResponse = await fetch(
+						`${process.env.NEXT_PUBLIC_WP_LOCAL_API_URL}/categories/${post.categories[0]}`,
+					);
+					const categoryData = await categoryResponse.json();
+					category = categoryData.name;
+				} catch (error) {
+					if (error instanceof Error) {
+						throw new Error(`Error fetching Category: ${error.message}`);
+					} else {
+						throw new Error("Unknown error occurred while fetching Category");
+					}
+				}
+			}
+
+			return {
+				...post,
+				featuredImage,
+				category,
+			};
+		}),
+	);
+
+	const firstPostImage = enrichedPosts[0]?.featuredImage || null;
+	const categories = ["All", ...Array.from(new Set(enrichedPosts.map(post => post.category)))];
+
+
+	return (
+		<div>
+			<Blog posts={enrichedPosts} firstPostImage={firstPostImage} categories={categories} />
+		</div>
+	);
+};
+
+export default Page;

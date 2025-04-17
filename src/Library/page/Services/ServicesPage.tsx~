@@ -1,0 +1,19 @@
+"use server";
+import React from "react";
+import ServicesHeroSection from "@/Library/page/Services/ServicesHeroSection/ServicesHeroSection";
+
+const ServicesPage = async () => {
+	const res = await fetch(`${process.env.WP_LOCAL_API_URL}/pages/?slug=services`, {
+		cache: "no-store",
+	});
+	const data = await res.json();
+
+	console.log(data, "data from servvice");
+	return (
+		<div>
+			<ServicesHeroSection services={data} />
+		</div>
+	);
+};
+
+export default ServicesPage;

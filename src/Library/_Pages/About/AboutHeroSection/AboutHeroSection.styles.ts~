@@ -1,0 +1,174 @@
+"use client";
+
+import styled from "styled-components";
+import { Breakpoints } from "@/Library/common/Grids/Grids";
+import { Display1, Text400 } from "@/Library/common/Typograhy/Typography";
+
+export const AboutHerosection = styled.section`
+	background-color: var(--neutral--800, #1f3154);
+	//margin-bottom: 41.5%;
+	padding-top: 110px;
+	position: relative;
+	//padding-bottom: 400px;
+
+	height: 100dvh;
+	@media screen and (min-width: ${Breakpoints.sm}) {
+		padding: 81px 48px;
+	}
+	@media screen and (min-width: ${Breakpoints.md}) {
+		padding: 81px 48px;
+	}
+	@media screen and (min-width: ${Breakpoints.lg}) {
+		padding: 81px 48px;
+	}
+`;
+
+export const AboutHeroSectionContainer = styled.div`
+	max-width: 955px;
+	margin: 0 auto;
+	text-align: center;
+`;
+
+export const HeroTitle = styled(Text400)`
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--accent--primary-1, #4187ff);
+	margin-bottom: 21px;
+`;
+export const HeroHeading = styled(Display1)`
+	color: var(--neutral--100, #fff);
+	margin-bottom: 8px;
+	@media screen and (min-width: ${Breakpoints.lg}) {
+		margin-bottom: 16px;
+	}
+`;
+
+export const HeroCaption = styled.p`
+	line-height: 1.583em;
+	color: var(--neutral--400, #dce1eb);
+	font-size: 20px;
+	margin-bottom: 40px;
+	@media screen and (min-width: ${Breakpoints.md}) {
+		font-size: 22px;
+		margin-bottom: 45px;
+	}
+	@media screen and (min-width: ${Breakpoints.lg}) {
+		font-size: 24px;
+		margin-bottom: 54px;
+	}
+`;
+export const AboutHeroButtonContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	justify-content: center;
+	align-items: center;
+
+	& > * {
+		width: 100%;
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
+
+	@media screen and (min-width: ${Breakpoints.md}) {
+		flex-direction: row;
+
+		& > * {
+			flex-grow: 0;
+			flex-shrink: 1;
+			width: fit-content;
+		}
+	}
+`;
+
+export const ShapesContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: -20dvh;
+	scale: 0.8;
+	//height: 57%;
+	//margin-right: -8%;
+	//transform: translateY(70%);
+`;
+
+export const GridContainer1 = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+
+	& .item1 {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		grid-area: 1/1/2/2;
+	}
+
+	& .item2 {
+		position: relative;
+		grid-area: 1/2/2/3;
+	}
+
+	& .item3 {
+		transform: translateX(-20%);
+		background-image: linear-gradient(
+			45deg,
+			var(--secondary--color-4, #ff5f55) 50%,
+			var(--secondary--color-2, #ffbfc7) 50%
+		);
+	}
+`;
+
+export const GreenCircle = styled.div`
+	border-top-left-radius: 10000px;
+	border-bottom-left-radius: 10000px;
+	width: 50%;
+	height: 100%;
+	background-color: var(--secondary--color-3, #77e36e);
+`;
+export const BlueCircle = styled.div`
+	width: 60%;
+	height: 60%;
+	border-radius: 50%;
+	background-color: var(--accent--primary-1, #4187ff);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+`;
+
+export const GridContainer2 = styled.div`
+	width: 100%;
+	height: 43%;
+	max-width: 78%;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: repeat(3, 1fr);
+	margin-left: auto;
+	margin-right: 4.5%;
+
+	& .item4 {
+		display: flex;
+		grid-area: 1/1/2/2;
+	}
+
+	& .item5 {
+		padding: 18px;
+		background-color: var(--secondary--color-1, #ffc32a);
+		border-radius: 1000000px;
+		display: flex;
+		justify-content: space-between;
+		grid-area: 1/2/2/4;
+
+		img {
+			object-fit: cover;
+			border-radius: 50%;
+		}
+	}
+`;
+export const RightHalfCircle = styled.div<{ BgColor: string }>`
+	border-top-right-radius: 10000px;
+	border-bottom-right-radius: 10000px;
+	background-color: ${({ BgColor }) => BgColor};
+	height: 100%;
+	width: 50%;
+`;

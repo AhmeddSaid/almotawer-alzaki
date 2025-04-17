@@ -1,0 +1,104 @@
+"use client";
+
+import styled from "styled-components";
+
+export const BlogResourcesShell = styled.section`
+	padding-block: 233px;
+	position: relative;
+	& .BlogResourcesButton {
+		display: flex;
+		justify-content: center;
+		margin-top: 60px;
+	}
+`;
+
+export const BlogResourcesHeaderShell = styled.div`
+	position: relative;
+`;
+
+export const BlogResourcesCardShell = styled.div`
+	max-width: 420px;
+	//height: 500px;
+	//overflow: hidden;
+	border-top-right-radius: 24px;
+	border-top-left-radius: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	@media screen and (max-width: 768px) {
+		max-width: 90%;
+	}
+
+	img {
+		border-radius: 24px;
+		transition: all 0.4s ease-in-out;
+	}
+
+	transition: all 0.4s ease-in-out;
+
+	&:hover {
+		transition: all 0.4s ease-in-out;
+
+		& .BlogResourcesCardP {
+			color: var(--accent--primary-1, #4187ff);
+			transition: all 0.3s ease-in-out;
+		}
+
+		img {
+			scale: 1.1;
+			transition: all 0.4s ease-in-out;
+		}
+	}
+
+	& .BlogResourcesCardImage {
+		border-radius: 24px;
+		overflow: hidden;
+		width: 420px;
+		height: 640px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	@media screen and (max-width: 768px) {
+		& .BlogResourcesCardImage {
+			overflow: hidden;
+			width: 100%;
+			height: 640px;
+		}
+	}
+`;
+
+export const BlogResourcesCardTitle = styled.p`
+	color: var(--neutral--600, #6e7a91);
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.111em;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+`;
+
+export const BlogResourcesCardP = styled.h3`
+	margin-bottom: 32px;
+	cursor: pointer;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1.417em;
+	color: rgb(31, 49, 84);
+	max-height: 68px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+`;
+
+export const ReadMore = styled.p`
+	color: var(--accent--primary-1, #4187ff);
+
+	font-family: Thicccboi, sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.667em;
+`;

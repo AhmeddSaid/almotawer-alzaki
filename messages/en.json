@@ -1,0 +1,40 @@
+{
+	"AboutPage": {
+		"Hero": {
+			"Title": "About Us",
+			"Heading": "A great company has a great team behind",
+			"Caption": "A great team of industry experts",
+			"MainBtn": "Get in touch",
+			"SubBtn": "Learn more"
+		}
+	},
+	"ContactUs": {
+		"Hero": {
+			"Heading": "Contact Us",
+			"Caption": " At Almotawer Alzaki Digital Marketing Agency, we're passionate about helping your business succeed online. Whether you have questions about our services, pricing, or just want to say hello, we're here to help.",
+			"ContactInfo": {
+				"Card1": {
+					"Icon": "inage1231(11).svg",
+					"Header": "Talk with Us",
+					"Body": "Feel free to reach out via email. Our team is always ready to discuss how we can elevate your digital presence.",
+					"Link": "contact@almotawer-alzaki.com",
+					"LinkInfo": "mailto:contact@almotawer-alzaki.com"
+				},
+				"Card2": {
+					"Icon": "inage1231(9).svg",
+					"Header": "Call Us",
+					"Body": "Prefer a quick chat? Give us a call, and we'll be happy to assist you.",
+					"Link": "+91 503606999",
+					"LinkInfo": "tel:+91503606999"
+				},
+				"Card3": {
+					"Icon": "inage1231(10).svg",
+					"Header": "Live Chat",
+					"Body": " Need immediate assistance? Connect with our support team in real-time.",
+					"Link": " Click the chat icon at the bottom right corner of your screen to start chatting now.",
+					"LinkInfo": "mailto:contact@almotawer-alzaki.com"
+				}
+			}
+		}
+	}
+}

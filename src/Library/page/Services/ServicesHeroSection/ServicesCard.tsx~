@@ -1,0 +1,75 @@
+import Image from "next/image";
+import React from "react";
+import styles from "./../../../common/Grids/Spaces.module.css";
+import { Col, Row } from "@/Library/common/Grids/Grids";
+import RightIcon from "@/Library/common/Icons/RightIcon/RightIcon";
+import {
+	CheckDiv,
+	ServicesCardShell,
+	ServicesCardSubTitle,
+	ServicesCardTitle,
+} from "@/Library/page/Services/ServicesHeroSection/ServicesHeroSection.styles";
+
+const ServicesCard = ({
+	title,
+	content,
+	tags,
+}: {
+	title: string;
+	content: string;
+	tags: string[];
+}) => {
+	return (
+		<>
+			<ServicesCardShell>
+				<Image src={"/inage1231 (3).svg"} alt={""} width={80} height={80} />
+				<ServicesCardTitle className={"ServicesCardTitle"}>{title}</ServicesCardTitle>
+				<ServicesCardSubTitle>{content}</ServicesCardSubTitle>
+				<Row>
+					<Col md={6}>
+						<CheckDiv align={"center"} gap={14}>
+							<RightIcon />
+
+							<p>{Checks[0]}</p>
+						</CheckDiv>{" "}
+					</Col>
+
+					<Col md={6}>
+						<CheckDiv align={"center"} gap={14}>
+							<RightIcon />
+
+							<p>{Checks[1]}</p>
+						</CheckDiv>
+					</Col>
+				</Row>{" "}
+				<Row className={styles.marginTop16}>
+					<Col md={6}>
+						<CheckDiv align={"center"} gap={14}>
+							<RightIcon />
+
+							<p>{Checks[2]}</p>
+						</CheckDiv>{" "}
+					</Col>
+
+					<Col md={6}>
+						<CheckDiv align={"center"} gap={14}>
+							<RightIcon />
+
+							<p>{Checks[3]}</p>
+						</CheckDiv>
+					</Col>
+				</Row>
+				{/*<Flexbox className={styles.marginTop16} gap={17}>*/}
+				{/*	<CheckDiv align={"center"} gap={14}>*/}
+				{/*		<RightIcon />*/}
+				{/*	</CheckDiv>{" "}*/}
+				{/*	<CheckDiv align={"center"} gap={14}>*/}
+				{/*		<RightIcon />*/}
+				{/*	</CheckDiv>*/}
+				{/*</Flexbox>*/}
+			</ServicesCardShell>
+		</>
+	);
+};
+
+export default ServicesCard;
